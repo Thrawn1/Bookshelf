@@ -3,14 +3,17 @@ from book_file_class import *
 from bookshelf_class import *
 from book_class import *
 
-db_file = shelve.open('book_DB')
+db_file_bookshelf = shelve.open('bookshelf_DB')
+db_file_book_file = shelve.open('book_file_DB')
+db_file_book = shelve.open('book_DB')
 Key_list = []
-for key in db_file:
+for key in db_file_book:
         Key_list.append(key)
 if Key_list == []:
         start_index = 0
 else:
         print('start_index не равен 0')
+        start_index = 1
 index_db = 'book' + str(start_index)
 print(index_db)
 
@@ -41,6 +44,13 @@ for field in fieldnames_eng:
                 field_number = field_number + 1
         else: 
                 pass
-db_file[index_db] = object_book
+db_file_book[index_db] = object_book
 print(object_book)
-db_file.close()
+
+
+
+db_file_book.close()
+db_file_bookshelf.close()
+db_file_book_file.close()
+
+
